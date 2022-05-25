@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/banner"
+    android:orientation="vertical"
+    tools:context=".ui.vender.DetallePublicacion">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_weight="30"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="20dp"
+                    android:gravity="center">
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/ic_variedad" />
+                    <Spinner
+                        android:id="@+id/spnVariedad_detalle_publicacion"
+                        android:layout_width="match_parent"
+                        android:background="@drawable/edt_redondeado"
+                        android:layout_height="50dp"
+                        android:pointerIcon="all_scroll"
+                        android:spinnerMode="dropdown"
+                        android:textColor="@color/colorNegro" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="20dp"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/ic_cantidad" />
+
+                    <EditText
+                        android:id="@+id/edtcantidad_detalle_publicacion"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/edt_redondeado"
+                        android:paddingLeft="20dp"
+                        android:maxLength="5"
+                        android:hint="@string/txt_cantidad"
+                        android:textColor="@color/colorNegro"
+                        android:textColorHint="@color/colorGris"
+                        android:inputType="number" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="20dp"
+                    android:gravity="center">
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/ic_precio" />
+                    <EditText
+                        android:id="@+id/edtprecio_detalle_publicacion"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/edt_redondeado"
+                        android:paddingLeft="20dp"
+                        android:maxLength="4"
+                        android:hint="@string/txt_precio"
+                        android:textColor="@color/colorNegro"
+                        android:textColorHint="@color/colorGris"
+                        android:inputType="numberDecimal" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="20dp">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/ic_descripcion" />
+
+                    <EditText
+                        android:id="@+id/edtDescripcion_detalle_publicacion"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:background="@drawable/edt_redondeado"
+                        android:paddingVertical="10dp"
+                        android:paddingHorizontal="20dp"
+                        android:gravity="top"
+                        android:maxLength="250"
+                        android:hint="@string/txt_descripcion"
+                        android:textColor="@color/colorNegro"
+                        android:textColorHint="@color/colorGris"
+                        android:inputType="textMultiLine" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="20dp">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/ic_camara" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/edt_redondeado"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="20dp">
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/imgArchivo_detallePublicacion"
+                            android:src="@drawable/ic_upload"
+                            android:layout_width="150dp"
+                            android:layout_height="150dp"
+                            app:civ_border_width="2dp"
+                            app:civ_border_color="@color/colorAmarillo"
+                            app:civ_border_overlay="true"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/btn_actualizar_detalle_publicacion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/btn_actualizar"
+                android:background="@drawable/btn_1"
+                android:textColor="@color/colorBlanco"
+                android:textSize="20sp"
+                android:layout_marginRight="80dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="20dp"
+                />
+        </LinearLayout>
+    </LinearLayout>
+    <com.getbase.floatingactionbutton.FloatingActionsMenu
+        android:id="@+id/grupoFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        app:fab_expandDirection="up"
+        app:fab_labelsPosition="left"
+        app:fab_addButtonColorNormal="@color/colorVerde1"
+        app:fab_addButtonColorPressed="@color/colorAmarillo"
+        app:fab_labelStyle="@style/labelFloating">
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnEliminar_detalle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_title="Eliminar"
+            app:fab_colorNormal="@color/colorMarron"
+            app:fab_icon="@drawable/ic_delete"
+            app:fab_size="mini"/>
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnmensaje_detalle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_title="Mensajes"
+            app:fab_colorNormal="@color/colorMarron"
+            app:fab_icon="@drawable/ic_mensajes"
+            app:fab_size="mini"/>
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnVender_detalle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_title="Vender"
+            app:fab_colorNormal="@color/colorMarron"
+            app:fab_icon="@drawable/ic_vender"
+            app:fab_size="mini"/>
+    </com.getbase.floatingactionbutton.FloatingActionsMenu>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

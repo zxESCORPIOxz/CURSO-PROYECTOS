@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@android:color/transparent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="30dp"
+        android:gravity="center"
+        android:background="@drawable/progressdialog">
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Medio"
+            android:fontFamily="@font/font_2"
+            android:textColor="@android:color/black"
+            android:textSize="23sp"/>
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorNegro"
+            android:layout_marginVertical="30dp"
+            android:text="¿Como desea subir la imagen?"
+            android:textAlignment="center" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_Camara"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="5dp"
+                android:textSize="20sp"
+                android:textColor="@color/colorMarron"
+                android:background="@drawable/btn_transp_1"
+                android:drawableTop="@drawable/ic_camara"
+                android:text="Camara"/>
+
+            <Button
+                android:id="@+id/btn_Galeria"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="5dp"
+                android:textSize="20sp"
+                android:textColor="@color/colorMarron"
+                android:background="@drawable/btn_transp_1"
+                android:drawableTop="@drawable/ic_galeria"
+                android:text="Galeria"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

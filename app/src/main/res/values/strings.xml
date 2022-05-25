@@ -1,0 +1,86 @@
+<resources>
+    <string name="app_name">Potatos Market</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Cerrar sesión</string>
+    <string name="menu_Inicio">Inicio</string>
+    <string name="menu_Vender">Vender</string>
+    <string name="menu_Comprar">Comprar</string>
+    <string name="menu_Estadisticos">Estadisticos</string>
+    <string name="menu_Configuracion">Configuración</string>
+    <string name="menu_Interesados">Interesados</string>
+    <string name="menu_Chat">Chat</string>
+    <string name="menu_regVenta">Registrar venta</string>
+    <string name="menu_detalleCompra">Detalle del producto</string>
+    <string name="menu_Dirección">Dirección</string>
+    <!-- Fragment independientes -->
+    <string name="titulo_Agregarpublicacion">Agregar Publicación</string>
+    <string name="titulo_DetallePublicación">Detalle Publicación</string>
+    <!-- API -->
+    <string name="ApiRegistrar">http://192.168.30.226/api/registrar.php?</string>
+    <!-- Error -->
+    <string name="txt_error">Ha ocurrido un problema...</string>
+    <string name="txt_not_user">Usuario no encontrado</string>
+    <string name="txt_not_publi">Fallo de conexion con el servidor</string>
+    <string name="txt_not_chat">No hay mensajes</string>
+    <string name="txt_pass_corto">La contraseña debe tener almenos 6 caracteres</string>
+    <string name="txt_dni_corto">El DNI debe tener almenos 8 caracteres</string>
+    <string name="txt_no_datos">Ingrese los datos correctamente</string>
+    <string name="txt_regitro_correcto">Se registro correctamente</string>
+    <string name="txt_regitro_incorrecto">Se registro incorrectamente</string>
+    <!-- Splash -->
+    <string name="txt_bienvenida">Bienvenido</string>
+    <string name="btn_omitir">Omitir</string>
+    <!-- Login -->
+    <string name="btn_ingresar">Iniciar sesión</string>
+    <string name="btn_registrarse">Registrarme</string>
+    <string name="btn_recuperar">Olvide mi contraseña</string>
+    <string name="edt_email">Correo electronico</string>
+    <string name="edt_pass">Contraseña</string>
+    <!-- Registrar usuario -->
+    <string name="titulo_reg_usuario">Registrarme</string>
+    <string name="edt_dni">DNI</string>
+    <string name="edt_apellido">Apellidos</string>
+    <string name="edt_nombre">Nombres</string>
+    <string name="edt_direción">Direción</string>
+    <string name="edt_telefono">Telefono</string>
+    <string name="btn_registrar">Registrar</string>
+    <string name="btn_actualizar">Actualizar</string>
+    <string name="btn_eliminar">Eliminar</string>
+    <string name="title_activity_buscar_direccion">Map</string>
+    <string name="guardar_mi_ubicacion">Guardar mi ubicación</string>
+    <string name="seleccione_su_ubicaci_n">Seleccione su ubicación</string>
+    <string name="elegir_ubicacion">Mueva el marcador para elegir la ubicacion</string>
+    <!-- Recurperar contraseña -->
+    <string name="txt_msj_correo">Ingrese su correo</string>
+    <string name="titulo_recuperar_contraseña">Recuperar contraseña</string>
+    <string name="btn_enviar_recuperar">Enviar correo</string>
+    <string name="txt_correo_enviado">Se le envio un correo para restablecer su contraseña</string>
+    <string name="txt_correo_noenviado">No se le envio un correo para restablecer su contraseña</string>
+    <!-- Agregar publicacion -->
+    <string name="txt_Variedad">Selecione la variedad</string>
+    <string name="txt_Variedad_filtrar">Seleccione la variedad para filtrar</string>
+    <string name="txt_cantidad">Cantidad(kg)</string>
+    <string name="txt_precio">Precio(S/.)</string>
+    <string name="txt_precioacordado">Precio acordado(S/.)</string>
+    <string name="txt_descripcion">Descripcion</string>
+    <string name="txt_subir">Subir imagen</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="elegir_medio">Seleccione por donde desea subir la imagen</string>
+    <string name="elegir_medio_op1">Camara</string>
+    <string name="elegir_medio_op2">Galeria</string>
+
+    <string name="loading">Cargando</string>
+    <string name="txtnombre">Nombre :</string>
+    <string name="txtcantidad">Cantidad :</string>
+    <string name="txtprecio">Precio :</string>
+    <string name="txtdescripcion">Descripcion :</string>
+    <string name="txtfecha">Fecha :</string>
+
+    <string name="txt_mensaje">Mensaje</string>
+
+</resources>

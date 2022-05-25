@@ -1,0 +1,36 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="MyToolbar" parent="Widget.MaterialComponents.Toolbar">
+        <item name="titleTextAppearance">@string/titulo_reg_usuario</item>
+    </style>
+    <style name="Menu" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:textSize">18dp</item>
+    </style>
+    <style name="toolbar">
+        <item name="android:textSize">18dp</item>
+        <item name="android:fontFamily">@font/font_2</item>
+        <item name="navigationIconTint">@color/colorNegro</item>
+    </style>
+    <style name="labelFloating">
+        <item name="android:textSize">18sp</item>
+        <item name="android:background">@drawable/btn_redondeado4</item>
+        <item name="android:textColor">@color/colorBlanco</item>
+        <item name="android:padding">7dp</item>
+    </style>
+</resources>

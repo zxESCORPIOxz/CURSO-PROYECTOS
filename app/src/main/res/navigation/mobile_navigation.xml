@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.potatosmarket.ui.home.Home"
+        android:label="@string/menu_Inicio"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/nav_vender"
+        android:name="com.example.potatosmarket.ui.vender.Vender"
+        android:label="@string/menu_Vender"
+        tools:layout="@layout/fragment_vender" >
+        <action
+            android:id="@+id/action_nav_vender_to_nav_agregar_publicacion"
+            app:destination="@id/nav_agregar_publicacion" />
+        <action
+            android:id="@+id/action_nav_vender_to_nav_detallePublicacion"
+            app:destination="@id/nav_detallePublicacion" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_comprar"
+        android:name="com.example.potatosmarket.ui.comprar.Comprar"
+        android:label="@string/menu_Comprar"
+        tools:layout="@layout/fragment_comprar" >
+        <action
+            android:id="@+id/action_nav_comprar_to_nav_detalleCompra"
+            app:destination="@id/nav_detalleCompra" />
+        <action
+            android:id="@+id/action_nav_comprar_to_nav_ubicarDireccion"
+            app:destination="@id/nav_ubicarDireccion" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_estadisticos"
+        android:name="com.example.potatosmarket.ui.estadisticos.Estadisticos"
+        android:label="@string/menu_Estadisticos"
+        tools:layout="@layout/fragment_estadisticos"/>
+    <fragment
+        android:id="@+id/nav_configuracion"
+        android:name="com.example.potatosmarket.ui.configuracion.Configuracion"
+        android:label="@string/menu_Configuracion"
+        tools:layout="@layout/fragment_configuracion" >
+    </fragment>
+    <fragment
+        android:id="@+id/nav_agregar_publicacion"
+        android:name="com.example.potatosmarket.ui.vender.agregar_publicacion"
+        android:label="@string/titulo_Agregarpublicacion"
+        tools:layout="@layout/fragment_agregar_publicacion">
+        <action
+            android:id="@+id/action_nav_agregar_publicacion_to_nav_vender"
+            app:destination="@id/nav_vender"/>
+    </fragment>
+    <fragment
+        android:id="@+id/nav_detallePublicacion"
+        android:name="com.example.potatosmarket.ui.vender.DetallePublicacion"
+        android:label="@string/titulo_DetallePublicación"
+        tools:layout="@layout/fragment_detalle_publicacion" >
+        <action
+            android:id="@+id/action_nav_detallePublicacion_to_nav_vender"
+            app:destination="@id/nav_vender" />
+        <action
+            android:id="@+id/action_nav_detallePublicacion_to_nav_conversacion"
+            app:destination="@id/nav_conversacion" />
+        <action
+            android:id="@+id/action_nav_detallePublicacion_to_nav_reg_vender"
+            app:destination="@id/nav_reg_vender" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_conversacion"
+        android:name="com.example.potatosmarket.ui.vender.Conversaciones"
+        android:label="@string/menu_Interesados"
+        tools:layout="@layout/fragment_conversaciones" >
+        <action
+            android:id="@+id/action_nav_conversacion_to_nav_chat_vender"
+            app:destination="@id/nav_chat_vender" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_chat_vender"
+        android:name="com.example.potatosmarket.ui.vender.ChatVendedor"
+        android:label="@string/menu_Chat"
+        tools:layout="@layout/fragment_chat" >
+    </fragment>
+    <fragment
+        android:id="@+id/nav_reg_vender"
+        android:name="com.example.potatosmarket.ui.vender.registrarVentas"
+        android:label="@string/menu_regVenta"
+        tools:layout="@layout/fragment_registrar_ventas" >
+    </fragment>
+    <fragment
+        android:id="@+id/nav_detalleCompra"
+        android:name="com.example.potatosmarket.ui.comprar.DetalleCompra"
+        android:label="@string/menu_detalleCompra"
+        tools:layout="@layout/fragment_detalle_compra" >
+    </fragment>
+    <fragment
+        android:id="@+id/nav_ubicarDireccion"
+        android:name="com.example.potatosmarket.ui.comprar.ubicarDireccion"
+        android:label="@string/menu_Dirección"
+        tools:layout="@layout/fragment_ubicar_direccion" >
+    </fragment>
+</navigation>

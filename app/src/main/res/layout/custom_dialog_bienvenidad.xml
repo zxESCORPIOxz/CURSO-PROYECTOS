@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="30dp"
+        android:gravity="center"
+        android:background="@drawable/progressdialog">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorNegro"
+            android:layout_marginVertical="30dp"
+            android:text="Bienvenido a la familia..."
+            android:drawableTop="@drawable/ic_bienvenida"
+            android:textAlignment="center" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/btn_ok"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:textSize="20sp"
+                android:textColor="@color/colorMarron"
+                android:background="@drawable/btn_transp_1"
+                android:text="OK"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

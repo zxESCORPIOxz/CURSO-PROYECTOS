@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1061190191297",
+    "firebase_url": "https://potatomarket-d1c2a-default-rtdb.firebaseio.com",
+    "project_id": "potatomarket-d1c2a",
+    "storage_bucket": "potatomarket-d1c2a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1061190191297:android:01c3a2d4f365d9674bec40",
+        "android_client_info": {
+          "package_name": "com.example.potatosmarket"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1061190191297-l87fh81eafand7427vm83avi6g74q6pj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqWYNLU721G3LeeqX-HS9jrCBKVM_WGEM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1061190191297-l87fh81eafand7427vm83avi6g74q6pj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

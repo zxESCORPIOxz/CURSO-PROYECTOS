@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/banner"
+    android:orientation="vertical"
+    tools:context=".ui.comprar.Comprar">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="20dp"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_variedad" />
+        <Spinner
+            android:id="@+id/spnVariedad_comprar"
+            android:layout_width="match_parent"
+            android:background="@drawable/edt_redondeado"
+            android:layout_height="50dp"
+            android:pointerIcon="arrow"
+            android:spinnerMode="dropdown"
+            android:textColor="@color/colorNegro" />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/lista_mis_productos_comprar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

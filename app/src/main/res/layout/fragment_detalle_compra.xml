@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/banner"
+    android:orientation="vertical"
+    tools:context=".ui.comprar.DetalleCompra">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:padding="20dp"
+        android:orientation="vertical">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imagePapa"
+            android:src="@drawable/ic_imagen"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            app:civ_border_width="2dp"
+            android:layout_marginRight="10dp"
+            app:civ_border_color="@color/colorAmarillo"
+            app:civ_border_overlay="true"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/txtNombreVariedad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/font_2"
+                android:textColor="@color/colorBlanco"
+                android:textAlignment="center"
+                android:text="NombreVariedad" />
+            <TextView
+                android:id="@+id/txtNombreVendedorCompra"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorBlanco"
+                android:textAlignment="center"
+                android:text="Nombre" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="20dp"
+        android:gravity="top">
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_descripcion" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/edt_redondeado"
+            android:padding="10dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorNegro"
+                android:text="Descripcion :" />
+            <TextView
+                android:id="@+id/txtDescripcionDetalleCompra"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:paddingHorizontal="15dp"
+                android:textColor="@color/colorNegro"
+                android:justificationMode="inter_word"
+                android:textAlignment="viewStart"
+                android:text="Descripcion" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="20dp"
+        android:gravity="top">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_cantidad" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/edt_redondeado"
+            android:padding="10dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorNegro"
+                android:text="Cantidad :" />
+            <TextView
+                android:id="@+id/txtCantidadDetalleCompra"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:paddingHorizontal="15dp"
+                android:textColor="@color/colorNegro"
+                android:justificationMode="inter_word"
+                android:textAlignment="viewStart"
+                android:text="Cantidad" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="20dp"
+        android:gravity="top">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_precio" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/edt_redondeado"
+            android:padding="10dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorNegro"
+                android:text="Precio :" />
+            <TextView
+                android:id="@+id/txtPrecioDetalleCompra"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:paddingHorizontal="15dp"
+                android:textColor="@color/colorNegro"
+                android:justificationMode="inter_word"
+                android:textAlignment="viewStart"
+                android:text="Precio" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="20dp"
+        android:gravity="top">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_fecha" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/edt_redondeado"
+            android:padding="10dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorNegro"
+                android:text="Fecha :" />
+            <TextView
+                android:id="@+id/txtFechaDetalleCompra"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:paddingHorizontal="15dp"
+                android:textColor="@color/colorNegro"
+                android:justificationMode="inter_word"
+                android:textAlignment="viewStart"
+                android:text="Fecha" />
+        </LinearLayout>
+    </LinearLayout>
+    </LinearLayout>
+    <com.getbase.floatingactionbutton.FloatingActionsMenu
+        android:id="@+id/grupoFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        app:fab_expandDirection="up"
+        app:fab_labelsPosition="left"
+        app:fab_addButtonColorNormal="@color/colorVerde1"
+        app:fab_addButtonColorPressed="@color/colorAmarillo"
+        app:fab_labelStyle="@style/labelFloating">
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnLlamardetalle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_title="Llamar"
+            app:fab_colorNormal="@color/colorMarron"
+            app:fab_icon="@drawable/ic_phone"
+            app:fab_size="mini"/>
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnUbicacióndetalle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_title="Ubicación"
+            app:fab_colorNormal="@color/colorMarron"
+            app:fab_icon="@drawable/ic_mapa"
+            app:fab_size="mini"/>
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnMensajesdetalle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_title="Mensajes"
+            app:fab_colorNormal="@color/colorMarron"
+            app:fab_icon="@drawable/ic_mensajes"
+            app:fab_size="mini"/>
+    </com.getbase.floatingactionbutton.FloatingActionsMenu>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

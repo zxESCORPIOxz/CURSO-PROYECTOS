@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#308C36</color>
+    <color name="colorPrimaryDark">#888888</color>
+    <color name="colorAccent">#ffffff</color>
+    <!-- MIS COLORES -->
+    <color name="colorVerde1">#308C36</color>
+    <color name="colorVerde2">#718C35</color>
+    <color name="colorAmarillo">#F2C230</color>
+    <color name="colorMarron">#732C03</color>
+    <color name="colorBlanco">#F2F2F2</color>
+    <color name="colorGris">#888888</color>
+    <color name="colorNegro">#000000</color>
+    <color name="colorBlancoTrans">#26F2F2F2</color>
+    <color name="colorTrans">#00F2F2F2</color>
+</resources>

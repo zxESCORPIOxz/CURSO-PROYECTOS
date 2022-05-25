@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/banner"
+    android:orientation="vertical"
+    tools:context=".ui.vender.agregar_publicacion">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_weight="30"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="20dp"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/ic_variedad" />
+                <Spinner
+                    android:id="@+id/spnVariedad_add_publicacion"
+                    android:layout_width="match_parent"
+                    android:background="@drawable/edt_redondeado"
+                    android:layout_height="50dp"
+                    android:pointerIcon="all_scroll"
+                    android:spinnerMode="dropdown"
+                    android:textColor="@color/colorNegro" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="20dp"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/ic_cantidad" />
+
+                <EditText
+                    android:id="@+id/edtcantidad_add_publicacion"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/edt_redondeado"
+                    android:paddingLeft="20dp"
+                    android:maxLength="5"
+                    android:hint="@string/txt_cantidad"
+                    android:textColor="@color/colorNegro"
+                    android:textColorHint="@color/colorGris"
+                    android:inputType="number" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="20dp"
+                android:gravity="center">
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/ic_precio" />
+                <EditText
+                    android:id="@+id/edtprecio_add_publicacion"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/edt_redondeado"
+                    android:paddingLeft="20dp"
+                    android:maxLength="4"
+                    android:hint="@string/txt_precio"
+                    android:textColor="@color/colorNegro"
+                    android:textColorHint="@color/colorGris"
+                    android:inputType="numberDecimal" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="20dp">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/ic_descripcion" />
+
+                <EditText
+                    android:id="@+id/edtDescripcion_add_publicacion"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:background="@drawable/edt_redondeado"
+                    android:paddingVertical="10dp"
+                    android:paddingHorizontal="20dp"
+                    android:gravity="top"
+                    android:maxLength="250"
+                    android:hint="@string/txt_descripcion"
+                    android:textColor="@color/colorNegro"
+                    android:textColorHint="@color/colorGris"
+                    android:inputType="textMultiLine" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="20dp">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/ic_camara" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edt_redondeado"
+                    android:gravity="center"
+                    android:padding="20dp"
+                    android:orientation="vertical">
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/imgArchivo_agregarPublicacion"
+                        android:src="@drawable/ic_upload"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        app:civ_border_width="2dp"
+                        app:civ_border_color="@color/colorAmarillo"
+                        app:civ_border_overlay="true"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btn_registrar_publicacion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5"
+            android:text="@string/btn_registrar"
+            android:background="@drawable/btn_1"
+            android:textColor="@color/colorBlanco"
+            android:textSize="20sp"
+            android:layout_margin="20dp"
+            />
+    </LinearLayout>
+</LinearLayout>
