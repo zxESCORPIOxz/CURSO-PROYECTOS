@@ -104,8 +104,7 @@ public class ubicarDireccion extends Fragment implements GoogleMap.OnMapLongClic
                         e.printStackTrace();
                     }
                     Direccion.setText(direccion);
-                    Coordenadas.setText("Area : "+ SphericalUtil.computeArea(listaMarker)
-                            +"\nPerimetro : "+SphericalUtil.computeLength(listaMarker));
+                    Coordenadas.setText(lat+" , "+lng);
                 }
             });
             mMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
@@ -134,7 +133,7 @@ public class ubicarDireccion extends Fragment implements GoogleMap.OnMapLongClic
                             break;
                         }
                         default:{
-                            Toast.makeText(getContext(), "Solo se pueden integrar", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "Solo se pueden integrar 4 markas", Toast.LENGTH_SHORT).show();
                             break;
                         }
                     }
@@ -153,12 +152,7 @@ public class ubicarDireccion extends Fragment implements GoogleMap.OnMapLongClic
         }
         LocationManager lm = (LocationManager) getContext().getSystemService(Context.LOCATION_SERVICE);
         Location l = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-        //actualizar(l);
-        LatLng coordenadas = new LatLng(-12.067984798986537, -75.21003798750014);//new LatLng(l.getLatitude(),l.getLongitude());
-        CameraUpdate myUbicacion = CameraUpdateFactory.newLatLngZoom(coordenadas, 16);
-        //mimarca = mMap.addMarker(new MarkerOptions().position(coordenadas).draggable(true).title("Mi ubicación").icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_gm_casa)));
 
-        mMap.animateCamera(myUbicacion);
         try {
             Geocoder geocoder = new Geocoder(getContext(), Locale.getDefault());
             List<Address> list = geocoder.getFromLocation(
@@ -209,7 +203,7 @@ public class ubicarDireccion extends Fragment implements GoogleMap.OnMapLongClic
         btnterr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(markas==4){
+                if(markas>=4){
                     gps1.setText(marca1.getPosition().latitude+" , "+marca1.getPosition().longitude);
                     gps2.setText(marca1.getPosition().latitude+" , "+marca1.getPosition().longitude);
                     gps3.setText(marca1.getPosition().latitude+" , "+marca1.getPosition().longitude);
@@ -267,7 +261,7 @@ public class ubicarDireccion extends Fragment implements GoogleMap.OnMapLongClic
         return date + " " + time;
     }
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
         SupportMapFragment mapFragment =
                 (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
@@ -319,7 +313,7 @@ public class ubicarDireccion extends Fragment implements GoogleMap.OnMapLongClic
         double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
         double d = R * c;
         return d;
-    };
+    }
 
     @Override
     public void onMapLongClick(LatLng latLng) {

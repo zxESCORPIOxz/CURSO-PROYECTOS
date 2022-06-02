@@ -25,12 +25,17 @@ import com.example.potatosmarket.R;
 
 import org.json.JSONObject;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 public class registrarVentas extends Fragment {
     EditText edtCorreo,edtCantidad,edtPrecio,edtDescripcion;
     Button btnRegistrar;
     RequestQueue request;
     JsonObjectRequest jsonObjectRequest;
     String correo,idPublicacion;
+    int cantidad;
     ProgressDialog progreso;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -45,6 +50,7 @@ public class registrarVentas extends Fragment {
         SharedPreferences preferencias = getContext().getSharedPreferences("ARCHIVOREG", Context.MODE_PRIVATE);
         correo=preferencias.getString("correo","");
         idPublicacion=preferencias.getString("idPublicacion","");
+        cantidad= Integer.parseInt(preferencias.getString("cantidad",""));
         btnRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,14 +58,25 @@ public class registrarVentas extends Fragment {
                 edtPrecio.getText().length()!=0 &&
                 edtCantidad.getText().length()!=0 &&
                 edtCorreo.getText().length()!=0){
-                    regVenta();
-                    Navigation.findNavController(view).navigate(R.id.nav_detallePublicacion);
+                    if (cantidad>=Integer.parseInt(edtCantidad.getText().toString())){
+                        regVenta();
+                        Navigation.findNavController(view).navigate(R.id.nav_vender);
+                    }else {
+                        Toast.makeText(getContext(),"No se cuenta con stock suficiente", Toast.LENGTH_SHORT).show();
+                    }
                 }else {
                     Toast.makeText(getContext(),R.string.txt_no_datos, Toast.LENGTH_SHORT).show();
                 }
             }
         });
         return view;
+    }
+    private String getDate(){
+        DateFormat dfDate = new SimpleDateFormat("yyyy/MM/dd");
+        String date=dfDate.format(Calendar.getInstance().getTime());
+        DateFormat dfTime = new SimpleDateFormat("HH:mm:ss");
+        String time = dfTime.format(Calendar.getInstance().getTime());
+        return date + " " + time;
     }
 
     private void regVenta() {
@@ -73,7 +90,8 @@ public class registrarVentas extends Fragment {
                 +"&nidPublicacionUsuario="+idPublicacion
                 +"&ncantidad="+edtCantidad.getText().toString()
                 +"&nprecioAcordado="+edtPrecio.getText().toString()
-                +"&ndescripcion="+edtDescripcion.getText().toString();
+                +"&ndescripcion="+edtDescripcion.getText().toString()
+                +"&nfecha="+getDate();
         myURL = myURL.replace(" ", "%20");
         jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, myURL, null, new Response.Listener<JSONObject>() {
             @Override
