@@ -2,12 +2,14 @@ package com.example.potatosmarket.ui.vender;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
@@ -43,6 +45,8 @@ import com.example.potatosmarket.R;
 import com.example.potatosmarket.entidades.LoadImagenes;
 import com.example.potatosmarket.ui.vender.Vender;
 import com.getbase.floatingactionbutton.FloatingActionButton;
+import com.theartofdev.edmodo.cropper.CropImage;
+import com.theartofdev.edmodo.cropper.CropImageView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -87,6 +91,8 @@ public class DetallePublicacion extends Fragment implements Response.ErrorListen
     int mensajes;
     Button Okay,Cancel;
     private Dialog dialog;
+    boolean cimg=false;
+    private Uri imageUri;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -211,7 +217,7 @@ public class DetallePublicacion extends Fragment implements Response.ErrorListen
                     @Override
                     public void onResponse(String response) {
                         progreso.hide();
-                        Toast.makeText(getContext(), response, Toast.LENGTH_LONG).show();
+                        Toast.makeText(getContext(), "Actualizado", Toast.LENGTH_LONG).show();
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -334,32 +340,59 @@ public class DetallePublicacion extends Fragment implements Response.ErrorListen
         dialog.show();
     }
     public void tomarFoto() {
-        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        startActivityForResult(intent, TOMAR_FOTO);
+        ContentValues values = new ContentValues();
+        values.put(MediaStore.Images.Media.TITLE, "Titulo de la Imagen");
+        values.put(MediaStore.Images.Media.DESCRIPTION, "Descripción de la imagen");
+        imageUri = getActivity().getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
+        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+        startActivityForResult(cameraIntent, TOMAR_FOTO);
     }
 
     public void seleccionarImagen() {
-        Intent galeria = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
-        startActivityForResult(galeria, SELEC_IMAGEN);
+        Intent galleryIntent = new Intent(Intent.ACTION_PICK);
+        galleryIntent.setType("image/*");
+        startActivityForResult(galleryIntent, SELEC_IMAGEN);
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         try {
-            if(resultCode == RESULT_OK && requestCode == SELEC_IMAGEN) {
-                imagenUri = data.getData();
-                img.setImageURI(imagenUri);
-                mybm = ((BitmapDrawable)img.getDrawable()).getBitmap();
-            } else if(resultCode == RESULT_OK && requestCode == TOMAR_FOTO) {
-                Bundle extras = data.getExtras();
-                mybm = (Bitmap) extras.get("data");
-                img.setImageBitmap(mybm);
+            if (resultCode == RESULT_OK){
+                if(requestCode == SELEC_IMAGEN){
+                    CropImage.activity(data.getData())
+                            .setGuidelines(CropImageView.Guidelines.ON)
+                            .setAspectRatio(1, 1)
+                            .setBorderCornerColor(Color.BLACK)
+                            .start(getContext(), this);
+                }
+                else if(requestCode == TOMAR_FOTO){
+                    CropImage.activity(imageUri)
+                            .setAspectRatio(1, 1)
+                            .setBorderCornerColor(Color.BLACK)
+                            .start(getContext(), this);
+                }
+                else if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE){
+                    //Croped image received
+                    CropImage.ActivityResult result = CropImage.getActivityResult(data);
+                    if (resultCode == RESULT_OK){
+                        Uri resultUri = result.getUri();
+                        imageUri = resultUri;
+                        img.setImageURI(resultUri);
+                        Bitmap bm = ((BitmapDrawable)img.getDrawable()).getBitmap();
+                        mybm=Bitmap.createScaledBitmap(bm, 100, 100, true);
+                        cimg=true;
+                    }else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE){
+                        Exception error = result.getError();
+                        System.out.println(error);
+                        Toast.makeText(getContext(), ""+error, Toast.LENGTH_SHORT).show();
+                    }
+                }
             }
         }catch (Exception e){
             Toast.makeText(getContext(), e.toString(), Toast.LENGTH_SHORT).show();
         }
-
     }
     public String getStringImagen(Bitmap bmp) {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();

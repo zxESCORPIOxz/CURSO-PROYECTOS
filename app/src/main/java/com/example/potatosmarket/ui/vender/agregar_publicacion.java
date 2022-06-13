@@ -79,11 +79,11 @@ public class agregar_publicacion extends Fragment implements Response.ErrorListe
     ArrayList<String> VariedadList;
     Spinner spnVariedad;
     Bitmap mybm;
-    private Uri imageUri;;
     int TOMAR_FOTO = 100;
     int SELEC_IMAGEN = 200;
     private String correo;
     boolean cimg=false;
+    private Uri imageUri;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -280,7 +280,6 @@ public class agregar_publicacion extends Fragment implements Response.ErrorListe
             }
         }catch (Exception e){
             Toast.makeText(getContext(), e.toString(), Toast.LENGTH_SHORT).show();
-            System.out.println(e);
         }
     }
     public String getStringImagen(Bitmap bmp) {
