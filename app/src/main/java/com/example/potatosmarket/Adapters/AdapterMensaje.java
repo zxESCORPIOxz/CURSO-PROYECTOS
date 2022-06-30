@@ -63,13 +63,13 @@ public class AdapterMensaje extends RecyclerView.Adapter<AdapterMensaje.Recycler
             holder.txtnombre.setGravity(Gravity.RIGHT);
             holder.contenedor.setHorizontalGravity(Gravity.RIGHT);
             holder.contenedor.setGravity(Gravity.RIGHT);
-            holder.txtnombre.setTextColor(ContextCompat.getColor(context, R.color.colorAmarillo));
+            holder.cont.setBackgroundResource(R.drawable.item_msj_1);
         }else {
             holder.txtnombre.setText(model.get(position).getNombre());
             holder.txtnombre.setGravity(Gravity.LEFT);
             holder.contenedor.setHorizontalGravity(Gravity.LEFT);
             holder.contenedor.setGravity(Gravity.LEFT);
-            holder.txtnombre.setTextColor(ContextCompat.getColor(context, R.color.colorVerde1));
+            holder.cont.setBackgroundResource(R.drawable.item_msj_2);
         }
     }
 
@@ -81,7 +81,7 @@ public class AdapterMensaje extends RecyclerView.Adapter<AdapterMensaje.Recycler
     public class RecyclerHolder extends RecyclerView.ViewHolder {
         private TextView txtnombre, txtcontenido, txtfecha;
         private ImageView imgLeido;
-        private LinearLayout contenedor;
+        private LinearLayout contenedor,cont;
         public RecyclerHolder(@NonNull View itemView) {
             super(itemView);
             txtnombre=itemView.findViewById(R.id.Nombreitem);
@@ -89,6 +89,7 @@ public class AdapterMensaje extends RecyclerView.Adapter<AdapterMensaje.Recycler
             txtfecha=itemView.findViewById(R.id.Fechaitem);
             imgLeido=itemView.findViewById(R.id.leidoitem);
             contenedor=itemView.findViewById(R.id.contenedorMensaje);
+            cont=itemView.findViewById(R.id.lnlContenedor);
         }
     }
 }

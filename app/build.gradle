@@ -59,5 +59,6 @@ dependencies {
     implementation 'com.google.maps.android:android-maps-utils:0.5'
     implementation 'com.google.android.gms:play-services-maps:15.0.1'
     implementation'com.github.PhilJay:MPAndroidChart:v3.1.0-alpha'
-
+    def lottieVersion = "3.4.0"
+    implementation "com.airbnb.android:lottie:$lottieVersion"
 }

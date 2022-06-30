@@ -124,7 +124,6 @@ public class DetallePublicacion extends Fragment implements Response.ErrorListen
         ld = new LoadImagenes(img);
         ld.execute(foto);
         cargarVariedad();
-
         dialog = new Dialog(getContext());
         dialog.setContentView(R.layout.custom_dialog_yes_no);
         dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);

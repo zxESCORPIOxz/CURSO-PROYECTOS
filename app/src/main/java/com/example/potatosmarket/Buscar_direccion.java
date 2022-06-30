@@ -39,6 +39,8 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 
 import java.io.IOException;
 import java.util.List;
@@ -90,44 +92,43 @@ public class Buscar_direccion extends AppCompatActivity implements GoogleMap.OnI
                 == PackageManager.PERMISSION_GRANTED) {
             mMap.setMyLocationEnabled(true);
         } else {
+
         }
         mMap.getUiSettings().setZoomControlsEnabled(true);
         mMap.setOnMarkerDragListener(this);
         miUBICACION();
     }
 
-
     private void miUBICACION() {
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
+        int permiso = ContextCompat.checkSelfPermission(this,Manifest.permission.ACCESS_COARSE_LOCATION);
+        if (permiso == PackageManager.PERMISSION_DENIED){
+            if(ActivityCompat.shouldShowRequestPermissionRationale(this,Manifest.permission.ACCESS_FINE_LOCATION)){
+
+            }else{
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION},1);
+            }
+        }else{
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},1);
         }
         LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-            Location l = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-            //actualizar(l);
-            LatLng coordenadas = new LatLng(l.getLatitude(),l.getLongitude());
-            CameraUpdate myUbicacion = CameraUpdateFactory.newLatLngZoom(coordenadas, 16);
-            mimarca = mMap.addMarker(new MarkerOptions().position(coordenadas).draggable(true)
-                    .title("Mi ubicación").icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_gm_casa)));
-            mMap.animateCamera(myUbicacion);
-            try {
-                Geocoder geocoder = new Geocoder(this, Locale.getDefault());
-                List<Address> list = geocoder.getFromLocation(
-                        l.getLatitude(),l.getLongitude(), 1);
-                if (!list.isEmpty()) {
-                    Address DirCalle = list.get(0);
-                    direccion = DirCalle.getAddressLine(0);
-                    lat=l.getLatitude();
-                    lng=l.getLongitude();
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
+        Location l = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        LatLng coordenadas = new LatLng(l.getLatitude(),l.getLongitude());
+        CameraUpdate myUbicacion = CameraUpdateFactory.newLatLngZoom(coordenadas, 16);
+        mimarca = mMap.addMarker(new MarkerOptions().position(coordenadas).draggable(true)
+                .title("Mi ubicación").icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_gm_casa)));
+        mMap.animateCamera(myUbicacion);
+        try {
+            Geocoder geocoder = new Geocoder(this, Locale.getDefault());
+            List<Address> list = geocoder.getFromLocation(
+                    l.getLatitude(),l.getLongitude(), 1);
+            if (!list.isEmpty()) {
+                Address DirCalle = list.get(0);
+                direccion = DirCalle.getAddressLine(0);
+                lat=l.getLatitude();
+                lng=l.getLongitude();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
