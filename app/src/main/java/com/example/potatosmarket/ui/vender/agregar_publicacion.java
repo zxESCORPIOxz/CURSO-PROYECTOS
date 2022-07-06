@@ -117,7 +117,6 @@ public class agregar_publicacion extends Fragment implements Response.ErrorListe
                 && edtPrecio.getText().length()!=0
                 && spnVariedad.getSelectedItemId()!=0 && cimg){
                     registrarPublicacion();
-                    //recargarVender();
                     Navigation.findNavController(view).navigate(R.id.nav_vender);
                 }else {
                     Toast.makeText(getContext(), R.string.txt_no_datos, Toast.LENGTH_SHORT).show();

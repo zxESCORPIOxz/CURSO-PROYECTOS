@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.example.potatosmarket.DATOS;
 import com.example.potatosmarket.R;
 import com.example.potatosmarket.entidades.Compra;
 import com.example.potatosmarket.entidades.LoadImagenes;
@@ -20,10 +22,12 @@ public class AdapterCompra  extends RecyclerView.Adapter<AdapterCompra.RecyclerH
     LayoutInflater inflater;
     ArrayList<Compra> model;
     View.OnClickListener listener;
+    Context context;
 
     public AdapterCompra(Context context, ArrayList<Compra> model) {
         this.inflater = LayoutInflater.from(context);
         this.model = model;
+        this.context = context;
     }
 
     @Override
@@ -55,8 +59,9 @@ public class AdapterCompra  extends RecyclerView.Adapter<AdapterCompra.RecyclerH
         holder.txtnombre.setText(nombre);
         holder.txtcantidad.setText(cantidad+" Kg");
         holder.txtprecio.setText(precio+" S/.");
-        LoadImagenes ld = new LoadImagenes(holder.imgitem);
-        ld.execute(img);
+        Glide.with(context).load(DATOS.IP_SERVER+img).into(holder.imgitem);
+//        LoadImagenes ld = new LoadImagenes(holder.imgitem);
+//        ld.execute(img);
     }
 
     @Override

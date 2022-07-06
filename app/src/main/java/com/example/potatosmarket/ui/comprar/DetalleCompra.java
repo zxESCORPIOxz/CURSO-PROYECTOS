@@ -24,6 +24,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
 import com.example.potatosmarket.DATOS;
 import com.example.potatosmarket.R;
 import com.example.potatosmarket.entidades.Conversacion;
@@ -76,8 +77,9 @@ public class DetalleCompra extends Fragment {
         idUsuarioVendedor=preferencias.getString("usuario","");
         correo=preferencias.getString("correo","");
         idpublicacion=preferencias.getString("idPublicacion","");
-        LoadImagenes ld = new LoadImagenes(imgPapa);
-        ld.execute(preferencias.getString("foto",""));
+        Glide.with(this).load(DATOS.IP_SERVER+preferencias.getString("foto","")).into(imgPapa);
+//        LoadImagenes ld = new LoadImagenes(imgPapa);
+//        ld.execute(preferencias.getString("foto",""));
         obtenerDatosVendedor();
         obtenerConversacion();
         btnLLamar.setOnClickListener(new View.OnClickListener() {
@@ -114,6 +116,8 @@ public class DetalleCompra extends Fragment {
                 Navigation.findNavController(v).navigate(R.id.nav_ubicarDireccion);
             }
         });
+        btnMapa.setVisibility(View.INVISIBLE);
+        btnMapa.setEnabled(false);
         return view;
     }
 
@@ -128,6 +132,13 @@ public class DetalleCompra extends Fragment {
                     telefonoV = myjson.getString("telefono");
                     Lng = myjson.getString("longitud");
                     Lat = myjson.getString("latitud");
+                    if (Double.parseDouble(Lat)==0 && Double.parseDouble(Lng)==0){
+                        btnMapa.setVisibility(View.INVISIBLE);
+                        btnMapa.setEnabled(false);
+                    }else {
+                        btnMapa.setVisibility(View.VISIBLE);
+                        btnMapa.setEnabled(true);
+                    }
                 } catch (JSONException e) {
                     Toast.makeText(getContext(), e.toString(), Toast.LENGTH_SHORT).show();
                 }

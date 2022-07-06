@@ -158,6 +158,7 @@ public class Estadisticos extends Fragment {
         });
         return view;
     }
+
     private void vaciar(){
         listaVariedad.clear();
         listaBar.clear();
@@ -165,6 +166,7 @@ public class Estadisticos extends Fragment {
         spnVariedad.setSelection(0);
         total=0;
     }
+
     private String getMes(){
         DateFormat dfDate = new SimpleDateFormat("MM");
         String date=dfDate.format(Calendar.getInstance().getTime());

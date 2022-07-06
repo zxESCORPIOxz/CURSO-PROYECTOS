@@ -7,6 +7,7 @@ import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -68,7 +69,7 @@ public class Login extends AppCompatActivity {
             progreso.show();
             progreso.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
             progreso.setContentView(R.layout.custom_progressdialog);
-
+            progreso.setCancelable(false);
             FirebaseAuth.getInstance().signInWithEmailAndPassword(
                     edtEmail.getText().toString(),
                     edtContraseña.getText().toString()).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -77,7 +78,10 @@ public class Login extends AppCompatActivity {
                     if(task.isSuccessful()){
                         progreso.hide();
                         Intent i = new Intent( Login.this, MainActivity.class);
-                        i.putExtra("correo",edtEmail.getText().toString());
+                        SharedPreferences sharedPreferences = getSharedPreferences("ARCHIVOREG", MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putString("correo", edtEmail.getText().toString());
+                        editor.apply();
                         startActivity(i);
                     }else{
                         progreso.hide();

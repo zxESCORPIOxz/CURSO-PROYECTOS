@@ -15,6 +15,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.potatosmarket.DATOS;
 import com.example.potatosmarket.R;
 import com.example.potatosmarket.entidades.LoadImagenes;
@@ -28,10 +29,12 @@ public class AdapterPublicacion extends RecyclerView.Adapter<AdapterPublicacion.
     LayoutInflater inflater;
     ArrayList<Publicacion> model;
     View.OnClickListener listener;
+    Context context;
 
     public AdapterPublicacion(Context context, ArrayList<Publicacion> model) {
         this.inflater = LayoutInflater.from(context);
         this.model = model;
+        this.context= context;
     }
 
     @Override
@@ -71,8 +74,9 @@ public class AdapterPublicacion extends RecyclerView.Adapter<AdapterPublicacion.
             holder.txtmsj.setBackgroundResource(R.drawable.circulo);
         }
         holder.txtmsj.setText(msj+"");
-        LoadImagenes ld = new LoadImagenes(holder.imgitem);
-        ld.execute(img);
+        Glide.with(context).load(DATOS.IP_SERVER+img).into(holder.imgitem);
+//        LoadImagenes ld = new LoadImagenes(holder.imgitem);
+//        ld.execute(img);
     }
 
     @Override

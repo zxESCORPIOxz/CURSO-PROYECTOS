@@ -3,6 +3,7 @@ package com.example.potatosmarket;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
@@ -17,7 +18,16 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.potatosmarket.entidades.UsuarioToken;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.messaging.FirebaseMessaging;
+
+import androidx.annotation.NonNull;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -44,12 +54,26 @@ public class MainActivity extends AppCompatActivity implements Response.Listener
         try {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_main);
+
+//            sendTOKEN();
+
             Toolbar toolbar = findViewById(R.id.toolbar);
             setSupportActionBar(toolbar);
             DrawerLayout drawer = findViewById(R.id.drawer_layout);
             NavigationView navigationView = findViewById(R.id.nav_view);
+            Button btncerrar = navigationView.findViewById(R.id.btn_cerrar);
+            btncerrar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    FirebaseAuth.getInstance().signOut();
+                    Intent intent = new Intent(MainActivity.this, Login.class);
+                    startActivity(intent);
+                }
+            });
             navigationView.setItemIconTintList(null);
-            correo=getIntent().getStringExtra("correo");
+
+            SharedPreferences preferencias = this.getSharedPreferences("ARCHIVOREG", MODE_PRIVATE);
+            correo=preferencias.getString("correo","");
             View headView = navigationView.getHeaderView(0);
             txtEmail = headView.findViewById(R.id.txt_correo_nav);
             txtNombre = headView.findViewById(R.id.txt_nombre_nav);
@@ -119,5 +143,24 @@ public class MainActivity extends AppCompatActivity implements Response.Listener
     @Override
     public void onBackPressed() {
         finishAffinity();
+    }
+
+
+    private void sendTOKEN() {
+        FirebaseMessaging.getInstance().getToken()
+        .addOnCompleteListener(new OnCompleteListener<String>() {
+            @Override
+            public void onComplete(@NonNull Task<String> task) {
+                if (!task.isSuccessful()) {
+                    return;
+                }
+
+                String token = task.getResult();
+
+                DatabaseReference df = FirebaseDatabase.getInstance().getReference();
+
+                df.child("Usuarios").push().setValue(new UsuarioToken(correo,token));
+            }
+        });
     }
 }

@@ -3,6 +3,7 @@ package com.example.potatosmarket;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.navigation.Navigation;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -26,10 +27,16 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.potatosmarket.entidades.UsuarioToken;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.iid.internal.FirebaseInstanceIdInternal;
+import com.google.firebase.messaging.FirebaseMessaging;
+
 import org.json.JSONObject;
 
 
@@ -49,6 +56,7 @@ public class RegistrarUsuario extends AppCompatActivity implements Response.List
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrar_usuario);
+
         btnVolver=findViewById(R.id.btn_volver);
         btngps=findViewById(R.id.btn_gps);
         btnregistrar=findViewById(R.id.btn_registrar_usuario);
@@ -84,8 +92,33 @@ public class RegistrarUsuario extends AppCompatActivity implements Response.List
         btngps.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(RegistrarUsuario.this, Buscar_direccion.class);
-                startActivityForResult(i, 1);
+                Dialog dialogyes_no = new Dialog(RegistrarUsuario.this);
+                dialogyes_no.setContentView(R.layout.custom_dialog_yes_no);
+                dialogyes_no.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                dialogyes_no.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+                dialogyes_no.setCancelable(false); //Optional
+                Button btnOkay = dialogyes_no.findViewById(R.id.btn_okay);
+                Button btnCancel = dialogyes_no.findViewById(R.id.btn_cancel);
+                TextView txtMensaje = dialogyes_no.findViewById(R.id.msjconfirmacion);
+                txtMensaje.setText("La información de su ubicación se mostrará a otros usuarios cuando usted desee vender un producto\n¿Está desacuerdo?");
+                btnOkay.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialogyes_no.dismiss();
+                        Intent i = new Intent(RegistrarUsuario.this, Buscar_direccion.class);
+                        startActivityForResult(i, 1);
+                    }
+                });
+                btnCancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialogyes_no.dismiss();
+                        edtDireccion.setText("No mostrar ubicación");
+                        lat="0";
+                        lng="0";
+                    }
+                });
+                dialogyes_no.show();
             }
         });
         btnregistrar.setOnClickListener(new View.OnClickListener() {
@@ -178,6 +211,7 @@ public class RegistrarUsuario extends AppCompatActivity implements Response.List
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()){
+//                        sendTOKEN();
                         dialog.show();
                     }else{
                         Toast.makeText(RegistrarUsuario.this, R.string.txt_regitro_incorrecto, Toast.LENGTH_SHORT).show();
@@ -189,4 +223,22 @@ public class RegistrarUsuario extends AppCompatActivity implements Response.List
         }
         progreso.hide();
     }
+
+//    private void sendTOKEN() {
+//        FirebaseMessaging.getInstance().getToken()
+//                .addOnCompleteListener(new OnCompleteListener<String>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<String> task) {
+//                        if (!task.isSuccessful()) {
+//                            return;
+//                        }
+//
+//                        String token = task.getResult();
+//
+//                        DatabaseReference df = FirebaseDatabase.getInstance().getReference();
+//
+//                        df.child("Usuarios").push().setValue(new UsuarioToken(edtemail.toString(),token));
+//                    }
+//                });
+//    }
 }

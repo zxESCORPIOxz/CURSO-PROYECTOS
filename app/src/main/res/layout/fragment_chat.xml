@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/edt_redondeado"
-            android:padding="20dp"
+            android:padding="15dp"
             android:maxLength="200"
             android:hint="@string/txt_mensaje"
             android:textColor="@color/colorNegro"

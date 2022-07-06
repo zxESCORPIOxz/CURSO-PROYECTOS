@@ -68,22 +68,9 @@ public class ubicarDireccion extends Fragment implements GoogleMap.OnMapLongClic
                 public void onMarkerDragEnd(Marker marker) {
                 }
             });
-            mapa();
+            mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
         }
     };
-
-    public void mapa(){
-        mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
-        if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
-                && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-
-        }else {
-            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION},PackageManager.PERMISSION_GRANTED);
-            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},PackageManager.PERMISSION_GRANTED);
-        }
-        LocationManager lm = (LocationManager) getContext().getSystemService(Context.LOCATION_SERVICE);
-        Location l = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-    }
 
     @Nullable
     @Override

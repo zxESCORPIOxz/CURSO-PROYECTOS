@@ -210,20 +210,20 @@
         app:fab_addButtonColorPressed="@color/colorAmarillo"
         app:fab_labelStyle="@style/labelFloating">
         <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/btnLlamardetalle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:fab_title="Llamar"
-            app:fab_colorNormal="@color/colorMarron"
-            app:fab_icon="@drawable/ic_phone"
-            app:fab_size="mini"/>
-        <com.getbase.floatingactionbutton.FloatingActionButton
             android:id="@+id/btnUbicacióndetalle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:fab_title="Ubicación"
             app:fab_colorNormal="@color/colorMarron"
             app:fab_icon="@drawable/ic_mapa"
+            app:fab_size="mini"/>
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnLlamardetalle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_title="Llamar"
+            app:fab_colorNormal="@color/colorMarron"
+            app:fab_icon="@drawable/ic_phone"
             app:fab_size="mini"/>
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:id="@+id/btnMensajesdetalle"

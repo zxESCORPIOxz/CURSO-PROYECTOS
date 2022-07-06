@@ -81,7 +81,6 @@ public class ChatVendedor extends Fragment implements Response.ErrorListener, Re
         jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, myURL, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                Toast.makeText(getContext(), response.optString("Consulta"), Toast.LENGTH_SHORT).show();
                 edtMesaje.setText("");
             }
         }, new Response.ErrorListener() {

@@ -63,6 +63,7 @@ import java.util.Hashtable;
 import java.util.Map;
 
 import static android.app.Activity.RESULT_OK;
+import static android.content.Context.MODE_PRIVATE;
 
 public class DetallePublicacion extends Fragment implements Response.ErrorListener, Response.Listener<JSONObject> {
     ImageView img;

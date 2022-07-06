@@ -70,6 +70,7 @@ public class Vender extends Fragment implements Response.ErrorListener, Response
         progreso.show();
         progreso.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         progreso.setContentView(R.layout.custom_progressdialog);
+        progreso.setCancelable(false);
         myrc.removeAllViewsInLayout();
         String myURL = DATOS.IP_SERVER+ "consultarPublicacion.php?nCorreo="+correo;
         myURL = myURL.replace(" ", "%20");
@@ -80,7 +81,7 @@ public class Vender extends Fragment implements Response.ErrorListener, Response
     @Override
     public void onErrorResponse(VolleyError error) {
         progreso.hide();
-        Toast.makeText(getContext(), R.string.txt_not_publi, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getContext(), R.string.txt_not_publi, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -105,12 +106,11 @@ public class Vender extends Fragment implements Response.ErrorListener, Response
                     );
                     listaPublicacion.add(publicacion);
                 }
-                //myresponse = response;
                 mostrarDatos();
                 progreso.hide();
             }
         } catch (JSONException e) {
-            Toast.makeText(getContext(), response.toString(), Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getContext(), response.toString(), Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -138,7 +138,7 @@ public class Vender extends Fragment implements Response.ErrorListener, Response
                 }
             });
         }catch (Exception e){
-            Toast.makeText(getContext(), ""+e, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getContext(), ""+e, Toast.LENGTH_SHORT).show();
         }
     }
 }

@@ -82,6 +82,7 @@
     <string name="txtfecha">Fecha :</string>
 
     <string name="txt_mensaje">Mensaje</string>
+    <string name="txtcerrar_sesi_n">Cerrar Sesión</string>
 
     <string-array name="meses">
         <item>Enero</item>
